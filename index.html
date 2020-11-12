@@ -8,5 +8,24 @@
     <script src="https://unpkg.com/read-excel-file@4.x/bundle/read-excel-file.min.js"></script>
 </head>
 <body style="background-color: #ede7f6;">
+<p>Select local CSV File:</p>
+<input id="csv" type="file">
+
+<output id="out">
+</output>
+<script>
+    var fileInput = document.getElementById("csv"),
+
+        readFile = function () {
+            var reader = new FileReader();
+            reader.onload = function () {
+                document.getElementById('out').innerHTML = reader.result;
+            };
+            reader.readAsBinaryString(fileInput.files[0]);
+        };
+
+    fileInput.addEventListener('change', readFile);
+
+</script>
 </body>
 </html>
